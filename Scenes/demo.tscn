@@ -1,0 +1,50 @@
+[gd_scene load_steps=10 format=3 uid="uid://c5wltcmmtqxb"]
+
+[ext_resource type="Script" uid="uid://btg1da38nxgyu" path="res://Scenes/demo.gd" id="1_f2jw5"]
+[ext_resource type="PackedScene" uid="uid://besjsafyw6nxp" path="res://Scenes/Walk.tscn" id="1_nsw6b"]
+[ext_resource type="PackedScene" uid="uid://dop3em7vi5bu7" path="res://Scenes/Run.tscn" id="2_glc8m"]
+[ext_resource type="PackedScene" uid="uid://tbenvpks8ckq" path="res://Scenes/Dying.tscn" id="3_tcdmn"]
+[ext_resource type="PackedScene" uid="uid://3h8x4030mw78" path="res://Scenes/Slash.tscn" id="4_tcdmn"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f2jw5"]
+transparency = 1
+backlight_enabled = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_qdju7"]
+material = SubResource("StandardMaterial3D_f2jw5")
+size = Vector3(50, 1, 30)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qdju7"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_lvddk"]
+material = SubResource("StandardMaterial3D_qdju7")
+size = Vector3(50, 50, 1)
+
+[node name="Node3D" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.139326, 2.0671, -0.225382)
+script = ExtResource("1_f2jw5")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.975045, 0.222008, 0, -0.222008, 0.975045, 0, 8.72715, 22.8369)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.975045, 0.222008, 0, -0.222008, 0.975045, 0.384424, 10.3476, 3.92716)
+
+[node name="Walk" parent="." instance=ExtResource("1_nsw6b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.19384, 0.467823, -0.739728)
+
+[node name="Run" parent="." instance=ExtResource("2_glc8m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.516, 2.77872, -5.00574)
+
+[node name="Dying" parent="." instance=ExtResource("3_tcdmn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.896303, 1.63591, 2.41616)
+
+[node name="Slash" parent="." instance=ExtResource("4_tcdmn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.86055, 2.28059, -0.169215)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_qdju7")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -15.8703)
+mesh = SubResource("BoxMesh_lvddk")
